@@ -40,3 +40,5 @@
   - output
 
 ### DB 구조
+
+![DB_구조](https://github.com/castlemo/sjdiary-backend/blob/master/images/sjdiary-erd.png)
