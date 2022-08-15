@@ -7,17 +7,15 @@ import {
   DB_HOST,
   DB_PASSWORD,
   DB_PORT,
-  DB_USERNAME,
-  LOCAL_FRONTEND_URL,
+  DB_USER_NAME,
+  FRONTEND_URL,
   NODE_ENV,
   VERCEL_FRONTEND_URL,
 } from '../common/constants';
 
 import { IConfig } from './config.interface';
 
-dotenv.config({
-  path: `.env.${process.env.NODE_ENV ?? 'local'}`,
-});
+dotenv.config();
 
 const env = process.env;
 
@@ -27,17 +25,17 @@ const config: IConfig = {
     type: 'mysql',
     host: env[DB_HOST],
     port: Number(env[DB_PORT]),
-    username: env[DB_USERNAME],
+    username: env[DB_USER_NAME],
     password: env[DB_PASSWORD],
     database: env[DB_DATABASE],
-    migrations: ['dist/database/migrations/*{.ts,.js}'],
-    entities: ['dist/entities/**/*.entity{.ts,.js}'],
+    migrations: ['dist/database/migrations/*.js'],
+    entities: ['dist/entities/**/*.entity.js'],
     cli: {
       migrationsDir: 'src/database/migrations',
     },
     // logging: env[NODE_ENV] === 'local' ? true : false,
-    // synchronize: NODE_ENV == 'development' ? true : false,
-    // dropSchema: NODE_ENV == 'development' ? true : false,
+    // synchronize: NODE_ENV == 'local' ? true : false,
+    // dropSchema: NODE_ENV == 'local' ? true : false,
   },
   auth0: {
     domain: env[AUTH0_DOMAIN],
@@ -48,7 +46,7 @@ const config: IConfig = {
     debug: env[NODE_ENV] === 'local',
     sortSchema: true,
     cors: {
-      origin: [env[LOCAL_FRONTEND_URL], env[VERCEL_FRONTEND_URL]],
+      origin: [env[FRONTEND_URL], env[VERCEL_FRONTEND_URL]],
       credentials: true,
     },
   },

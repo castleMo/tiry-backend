@@ -13,4 +13,5 @@ async function bootstrap() {
 
   console.log(`SJDiary Server Start. Port: ${port}`);
 }
+
 bootstrap();
