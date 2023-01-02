@@ -1,6 +1,6 @@
 # 성장일기
 
-링크: https://sjdiary.vercel.app
+~~링크: https://sjdiary.vercel.app
 
 ## 소개
 
